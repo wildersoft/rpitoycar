@@ -1,0 +1,115 @@
+<html>
+<head>
+<title>Camera</title>
+</head>
+<script>
+
+function sendData(action, value) {
+    var data = 0;
+    var request = new XMLHttpRequest();
+    request.open( "GET" , "?action=" + action + "&value=" +  value, true); 
+    request.send(null);
+    request.onreadystatechange = function () {
+        
+    }   
+    return 0;
+}
+</script>
+<style>
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: slider-vertical;
+    width: 55px;
+    height: 100%;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+    .btn{ cursor:pointer; width:100%; height:100%; text-align:center;}
+    .fullscreen {width:100%; height:100%}
+</style>
+<body style="font-family:'verdana';">
+<table align ="center" style = "text-align:center" cellpadding ="0" cellspacing ="0" class="fullscreen">
+<tr>
+    <td colspan="4">
+        <h1>Car Controller</h1>
+    </td>
+</tr>
+<tr>
+    <td colspan="4">
+        <img src="stream.mjpg" style="width:unset" class="fullscreen">
+    </td>
+</tr>
+<tr>
+    <td>
+        <table border = "0" cellpadding ="2" cellspacing ="2" class="fullscreen">
+            <tr>
+                <td>&nbsp;</td>
+                <td><button class="btn" onclick="sendData('action', 'go')">Go</button></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td><button class="btn"  onclick="sendData('action', 'left')">Left</button></td>
+                <td><button class="btn"  onclick="sendData('action', 'stop')">Stop</button></td>
+                <td><button class="btn"  onclick="sendData('action', 'right')">Rigth</button></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><button class="btn"  onclick="sendData('action', 'back')">Back</button></td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+    </td>
+    <td><button class="btn" onclick="sendData('action', 'stop')">Stop</button></td>
+    <td><input type="range" min="1" max="50" value="25" class="slider" id="myRange" onclick="sendData('speed', this.value)">
+    </td>
+    <td>
+        <table border = "0" cellpadding ="2" cellspacing ="2" class="fullscreen">
+            <tr><td><button class="btn" onclick="sendData('action', 'blink')">Blink</button></td></tr>
+            <tr><td><button class="btn" onclick="sendData('action', 'ledOn')">ON</button></td></tr>
+            <tr><td><button class="btn" onclick="sendData('action', 'ledOff')">OFF</button></td></tr>
+        </table>
+    </td>
+    <td>
+        <table border = "0" cellpadding ="2" cellspacing ="2" class="fullscreen">
+            <tr><td><button class="btn" onclick="sendData('action', 'CatMeow')">Meow</button></td></tr>
+            <tr><td><button class="btn" onclick="sendData('action', 'CatPurring')">Purring</button></td></tr>
+            <tr><td><button class="btn" onclick="sendData('action', 'DogBarking')">Barking</button></td></tr>
+        </table>
+    </td>
+    <td>
+        <table border = "0" cellpadding ="2" cellspacing ="2" class="fullscreen">
+            <tr><td><button class="btn" onclick="sendData('action', 'honk')">Honk</button></td></tr>
+            <tr><td><button class="btn"></buttton></td></tr>
+            <tr><td><button class="btn"></buttton></td></tr>
+        </table>
+    </td>
+</tr>
+</table>
+</body>
+</html>

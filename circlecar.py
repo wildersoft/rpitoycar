@@ -169,17 +169,17 @@ def stop():
 
 def go():
     stop()
-    GPIO.output(left1,GPIO.LOW)
-    GPIO.output(left2,GPIO.HIGH)
-    GPIO.output(right1,GPIO.LOW)
-    GPIO.output(right2,GPIO.HIGH)
-
-def back():
-    stop()
     GPIO.output(right1,GPIO.HIGH)
     GPIO.output(right2,GPIO.LOW)
     GPIO.output(left1,GPIO.HIGH)
     GPIO.output(left2,GPIO.LOW)
+
+def back():
+    stop()
+    GPIO.output(right1,GPIO.LOW)
+    GPIO.output(right2,GPIO.HIGH)
+    GPIO.output(left1,GPIO.LOW)
+    GPIO.output(left2,GPIO.HIGH)
 
 def right():
 

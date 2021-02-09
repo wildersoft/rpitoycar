@@ -61,7 +61,8 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
             value = params['value'][0]
             try:
                 param = params['param'][0]
-            except Exception:
+            except:
+                param = None
                 
         if value != None:
             if value == 'go':

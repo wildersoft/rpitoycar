@@ -55,10 +55,14 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
         print(params)
         action = None
         value = None
+        param = None
         if len(params):
             action = params['action'][0]
             value = params['value'][0]
-            param = params['param'][0]
+            try:
+                param = params['param'][0]
+            except Exception:
+                
         if value != None:
             if value == 'go':
                 go()

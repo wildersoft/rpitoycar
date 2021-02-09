@@ -1,19 +1,22 @@
 import RPi.GPIO as GPIO
 from time import sleep
 from datetime import datetime
-import pygame
 
 import io
-import picamera
 import logging
+import os
+import picamera
+import pygame
 import socketserver
 from threading import Condition
 from http import server
 from urllib.parse import urlsplit, parse_qs
 
 file=open("panelcar.html","r")
+files = getFiles()
 
-PAGE=file.read()
+PAGE = file.read()
+PAGE = PAGE.replace("$$options$$", files)
 
 class StreamingOutput(object):
     def __init__(self):
@@ -182,22 +185,28 @@ def go():
     GPIO.output(left2,GPIO.LOW)
 
 def left():
-
     GPIO.output(left1,GPIO.HIGH)
     GPIO.output(left2,GPIO.LOW)
     GPIO.output(right1,GPIO.LOW)
     GPIO.output(right2,GPIO.HIGH)
-    sleep(1)
-    stop()
+    #sleep(1)
+    #stop()
 
 def right():
     GPIO.output(left1,GPIO.LOW)
     GPIO.output(left2,GPIO.HIGH)
     GPIO.output(right1,GPIO.HIGH)
     GPIO.output(right2,GPIO.LOW)    
-    sleep(1)
-    stop()
+    #sleep(1)
+    #stop()
 
+def getFiles():
+    options = ""
+    directories = os.listdir(os.getcwd() + "/audio")
+    for file in directories:
+        options = "<option values='" + file + "'>" + file + "</option>"
+    
+    return options 
 
 def speed(velocity):
     p.ChangeDutyCycle(50 + velocity)

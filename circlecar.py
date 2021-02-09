@@ -12,8 +12,18 @@ from threading import Condition
 from http import server
 from urllib.parse import urlsplit, parse_qs
 
-file=open("panelcar.html","r")
+file = open("panelcar.html","r")
+
+def getFiles():
+    options = ""
+    directories = os.listdir(os.getcwd() + "/audio")
+    for file in directories:
+        options = options + "<option values='" + file + "'>" + file + "</option>"
+
+    return options
+
 files = getFiles()
+print(files)
 
 PAGE = file.read()
 PAGE = PAGE.replace("$$options$$", files)
@@ -199,14 +209,6 @@ def right():
     GPIO.output(right2,GPIO.LOW)    
     #sleep(1)
     #stop()
-
-def getFiles():
-    options = ""
-    directories = os.listdir(os.getcwd() + "/audio")
-    for file in directories:
-        options = "<option values='" + file + "'>" + file + "</option>"
-    
-    return options 
 
 def speed(velocity):
     p.ChangeDutyCycle(50 + velocity)

@@ -58,6 +58,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
         if len(params):
             action = params['action'][0]
             value = params['value'][0]
+            param = params['param'][0]
         if value != None:
             if value == 'go':
                 go()
@@ -80,6 +81,8 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
             elif value == 'ledOff':
                 ledOff(ledBlink1)
                 ledOff(ledBlink2)
+            elif value == 'PlayFile':
+                playMusic(param)
             elif value == 'honk':
                 playMusic('CarHonk.mp3')
             elif value == 'CatMeow':
@@ -88,7 +91,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
                 playMusic('CatPurring.mp3')
             elif value == 'DogBarking':
                 playMusic('DogBarking.mp3')
-            elif value == 'stop':
+            elif value == 'StopFile':
                 stopMusic()
 
             if action == 'speed':

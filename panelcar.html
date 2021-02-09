@@ -97,9 +97,9 @@ function sendData(action, value) {
     </td>
     <td>
         <table border = "0" cellpadding ="2" cellspacing ="2" class="fullscreen">
-            <tr><td><button class="btn" onclick="sendData('action', 'CatMeow')">Meow</button></td></tr>
-            <tr><td><button class="btn" onclick="sendData('action', 'CatPurring')">Purring</button></td></tr>
-            <tr><td><button class="btn" onclick="sendData('action', 'DogBarking')">Barking</button></td></tr>
+            <tr><td><select id="files">$$options$$</select></td></tr>
+            <tr><td><button class="btn" onclick="sendData('action', 'PlayFile')">Play</button></td></tr>
+            <tr><td><button class="btn" onclick="sendData('action', 'StopFile')">Stop</button></td></tr>
         </table>
     </td>
     <td>

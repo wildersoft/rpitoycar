@@ -4,14 +4,21 @@
 </head>
 <script>
 
-function sendData(action, value) {
+function sendData(action, value, item) {
     var data = 0;
     var request = new XMLHttpRequest();
-    request.open( "GET" , "?action=" + action + "&value=" +  value, true); 
+    item = "";
+    if (value == 'PlayFile')
+    {
+        item = document.getElementById('files').value;
+    }
+    
+    request.open( "GET" , "?action=" + action + "&value=" +  value + "&param=" + item, true); 
     request.send(null);
     request.onreadystatechange = function () {
         
-    }   
+    }
+    
     return 0;
 }
 </script>

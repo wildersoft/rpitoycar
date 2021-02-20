@@ -189,6 +189,7 @@ def stop():
 
 def back():
     stop()
+    print('back');
     GPIO.output(left1,GPIO.LOW)
     GPIO.output(left2,GPIO.HIGH)
     GPIO.output(right1,GPIO.LOW)
@@ -196,12 +197,14 @@ def back():
 
 def go():
     stop()
+    print('go');
     GPIO.output(right1,GPIO.HIGH)
     GPIO.output(right2,GPIO.LOW)
     GPIO.output(left1,GPIO.HIGH)
     GPIO.output(left2,GPIO.LOW)
 
 def left():
+    print('left');
     GPIO.output(left1,GPIO.HIGH)
     GPIO.output(left2,GPIO.LOW)
     GPIO.output(right1,GPIO.LOW)
@@ -210,6 +213,7 @@ def left():
     stop()
 
 def right():
+    print('right');
     GPIO.output(left1,GPIO.LOW)
     GPIO.output(left2,GPIO.HIGH)
     GPIO.output(right1,GPIO.HIGH)

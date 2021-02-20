@@ -118,31 +118,31 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
             self.send_header('Pragma', 'no-cache')
             self.send_header('Content-Type', 'multipart/x-mixed-replace; boundary=FRAME')
             self.end_headers()
-            try:
-                while True:
-                    if GPIO.input(PIR_PIN):
-                        #print ("Movement detected")
-                        now = datetime.now()
-                        #ledOn(ledBlink1)
-                        #ledOff(ledBlink1)
-                        #ledOn(ledBlink2)
-                        #ledOff(ledBlink2)
-                        current_time = now.strftime("%H:%M:%S")
-                        print("Movement detected, current time =", current_time)
+            #try:
+            #    while True:
+            #        if GPIO.input(PIR_PIN):
+            #            #print ("Movement detected")
+            #            now = datetime.now()
+            #            #ledOn(ledBlink1)
+            #            #ledOff(ledBlink1)
+            #            #ledOn(ledBlink2)
+            #            #ledOff(ledBlink2)
+            #            current_time = now.strftime("%H:%M:%S")
+            #            print("Movement detected, current time =", current_time)#
 
-                    with output.condition:
-                        output.condition.wait()
-                        frame = output.frame
-                    self.wfile.write(b'--FRAME\r\n')
-                    self.send_header('Content-Type', 'image/jpeg')
-                    self.send_header('Content-Length', len(frame))
-                    self.end_headers()
-                    self.wfile.write(frame)
-                    self.wfile.write(b'\r\n')
-            except Exception as e:
-                logging.warning(
-                    'Removed streaming client %s: %s',
-                    self.client_address, str(e))
+            #        with output.condition:
+            #            output.condition.wait()
+            #            frame = output.frame
+            #        self.wfile.write(b'--FRAME\r\n')
+            #        self.send_header('Content-Type', 'image/jpeg')
+            #        self.send_header('Content-Length', len(frame))
+            #        self.end_headers()
+            #        self.wfile.write(frame)
+            #        self.wfile.write(b'\r\n')
+            #except Exception as e:
+            #    logging.warning(
+            #        'Removed streaming client %s: %s',
+            #        self.client_address, str(e))
         else:
             self.send_error(404)
             self.end_headers()

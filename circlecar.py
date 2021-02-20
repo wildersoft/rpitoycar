@@ -1,13 +1,12 @@
 import RPi.GPIO as GPIO
-from time import sleep
-from datetime import datetime
-
 import io
 import logging
 import os
 import picamera
 import pygame
 import socketserver
+from time import sleep
+from datetime import datetime
 from threading import Condition
 from http import server
 from urllib.parse import urlsplit, parse_qs
@@ -260,24 +259,24 @@ GPIO.setmode(GPIO.BCM)
 PIR_PIN = 4
 GPIO.setup(PIR_PIN, GPIO.IN)
 
-GPIO.setup(left1,GPIO.OUT)
-GPIO.setup(left2,GPIO.OUT)
-GPIO.setup(right1,GPIO.OUT)
-GPIO.setup(right2,GPIO.OUT)
-GPIO.setup(en,GPIO.OUT)
-GPIO.setup(en2,GPIO.OUT)
-GPIO.setup(ledBlink1,GPIO.OUT)
-GPIO.setup(ledBlink2,GPIO.OUT)
+GPIO.setup(left1, GPIO.OUT)
+GPIO.setup(left2, GPIO.OUT)
+GPIO.setup(right1, GPIO.OUT)
+GPIO.setup(right2, GPIO.OUT)
+GPIO.setup(en, GPIO.OUT)
+GPIO.setup(en2, GPIO.OUT)
+GPIO.setup(ledBlink1, GPIO.OUT)
+GPIO.setup(ledBlink2, GPIO.OUT)
 
-GPIO.output(left1,GPIO.LOW)
-GPIO.output(left2,GPIO.LOW)
-GPIO.output(right1,GPIO.LOW)
-GPIO.output(right2,GPIO.LOW)
+GPIO.output(left1, GPIO.LOW)
+GPIO.output(left2, GPIO.LOW)
+GPIO.output(right1, GPIO.LOW)
+GPIO.output(right2, GPIO.LOW)
 
-p=GPIO.PWM(en,1000)
-p2=GPIO.PWM(en2,1000)
-p.start(75)
-p2.start(75)
+p=GPIO.PWM(en, 1000)
+p2=GPIO.PWM(en2, 1000)
+p.start(50)
+p2.start(50)
 
 with picamera.PiCamera(resolution='640x480', framerate=24) as camera:
     output = StreamingOutput()

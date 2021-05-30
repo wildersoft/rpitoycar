@@ -181,22 +181,22 @@ def back():
     GPIO.output(left1,GPIO.HIGH)
     GPIO.output(left2,GPIO.LOW)
 
-def right():
+def left():
 
     GPIO.output(left1,GPIO.HIGH)
     GPIO.output(left2,GPIO.LOW)
     GPIO.output(right1,GPIO.LOW)
     GPIO.output(right2,GPIO.HIGH)
-    sleep(1)
-    stop()
+    #sleep(1)
+    #stop()
 
-def left():
+def right():
     GPIO.output(left1,GPIO.LOW)
     GPIO.output(left2,GPIO.HIGH)
     GPIO.output(right1,GPIO.HIGH)
     GPIO.output(right2,GPIO.LOW)    
-    sleep(1)
-    stop()
+    #sleep(1)
+    #stop()
 
 def speed(velocity):
     p.ChangeDutyCycle(50 + velocity)

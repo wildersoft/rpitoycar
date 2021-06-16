@@ -11,7 +11,7 @@ from threading import Condition
 from http import server
 from urllib.parse import urlsplit, parse_qs
 
-file=open("panelcar.html","r")
+file=open("/home/pi/robocat/rpitoycar/panelcar.html","r")
 
 PAGE=file.read()
 

@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 from time import sleep
 from datetime import datetime
 import pygame
-
+import os
 import io
 import picamera
 import logging
@@ -77,6 +77,13 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
                 playMusic('DogBarking.mp3')
             elif value == 'stop':
                 stopMusic()
+            elif value == 'gitUpdate':
+                os.system('cmd /k "git pull"')
+                os.system('cmd /k " sudo systemctl restart robocat.service"')
+            elif value == 'restart':
+                os.system('cmd /k "sudo reboot"')
+            elif value == 'turnOff':
+                os.system('cmd /k "shutdown now"')
 
             if action == 'speed':
                 speed(float(value))

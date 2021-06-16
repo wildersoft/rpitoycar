@@ -105,8 +105,9 @@ function sendData(action, value) {
     <td>
         <table border = "0" cellpadding ="2" cellspacing ="2" class="fullscreen">
             <tr><td><button class="btn" onclick="sendData('action', 'honk')">Honk</button></td></tr>
-            <tr><td><button class="btn"></buttton></td></tr>
-            <tr><td><button class="btn"></buttton></td></tr>
+            <tr><td><button class="btn" onclick="sendData('action', 'gitUpdate')">Git Pull</buttton></td></tr>
+            <tr><td><button class="btn" onclick="sendData('action', 'turnOff')">Turn Off</buttton></td></tr>
+            <tr><td><button class="btn" onclick="sendData('action', 'restart')">Restart</buttton></td></tr>
         </table>
     </td>
 </tr>
